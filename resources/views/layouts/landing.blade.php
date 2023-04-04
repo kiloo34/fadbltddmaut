@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-        <title>SIMPELAN</title>
+        <title>SPK DD</title>
 
         <!-- General CSS Files -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,6 +17,7 @@
         <!-- Template CSS -->
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+        @vite(['assets/css/style.css', 'assets/css/components.css'])
 
         @stack('css')
         @stack('styles')
@@ -28,7 +29,7 @@
             <div class="main-wrapper container">
                 <div class="navbar-bg"></div>
                 <nav class="navbar navbar-expand-lg main-navbar">
-                    <a href="{{ route('landing') }}" class="navbar-brand sidebar-gone-hide">SIMPELAN</a>
+                    <a href="{{ route('landing') }}" class="navbar-brand sidebar-gone-hide">SPK DD</a>
                     <div class="navbar-nav">
                         <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i
                                 class="fas fa-bars"></i></a>
