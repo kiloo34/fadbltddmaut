@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Admin
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,5 +21,15 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::middleware(['auth'])->group(function () {
+    Route::group([
+        'prefix' => '/admin',
+        'middleware' => ['role:admin'],
+    ], function () {
+    	// Dashboard
+        Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('admin.dashboard.index');
+    });
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
