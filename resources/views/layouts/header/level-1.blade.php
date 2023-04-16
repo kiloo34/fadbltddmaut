@@ -4,6 +4,6 @@
     @else
     <a href="#">
     @endauth
-        SPFC
+        BLTDD
     </a>
 </div>

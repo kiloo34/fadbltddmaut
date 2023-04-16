@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Admin
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +25,16 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::group([
-        'prefix' => '/admin',
-        'middleware' => ['role:admin'],
+        'prefix'        => '/admin',
+        'as'            => 'admin.',
+        'middleware'    => ['role:admin'],
     ], function () {
     	// Dashboard
-        Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('admin.dashboard.index');
+        Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard.index');
+
+        // Criteria
+        Route::resource('kriteria', AdminCriteria::class);
+        Route::get('/allCriteria', [AdminCriteria::class, 'getAllData'])->name('criteria.all');
     });
 });
 

@@ -1,5 +1,15 @@
 <li class="menu-header">{{__("Menu")}}</li>
+
 @if (auth()->user()->role->name == 'admin')
+<li class="{{ $active == 'criteria' ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.kriteria.index') }}">
+        {{-- {{ route('obat.index') }} --}}
+        <i class="far fa-pills"></i>
+        <span>{{__('Criteria')}}</span>
+    </a>
+</li>
+@endif
+
 {{-- <li class="nav-item dropdown {{ $active == 'produksi' || $active == 'permintaan' ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown"><i class="fas fa-seedling"></i><span>Buah Naga</span></a>
     <ul class="dropdown-menu">
@@ -76,4 +86,3 @@
         <span>{{__('Profil')}}</span>
     </a>
 </li> --}}
-@endif
