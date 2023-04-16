@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 
 // Admin
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,17 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::group(['middleware' => ['role:admin']], function () {
-        //Dashboard
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::group([
+        'prefix'        => '/admin',
+        'as'            => 'admin.',
+        'middleware'    => ['role:admin'],
+    ], function () {
+    	// Dashboard
+        Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard.index');
+
+        // Criteria
+        Route::resource('kriteria', AdminCriteria::class);
+        Route::get('/allCriteria', [AdminCriteria::class, 'getAllData'])->name('criteria.all');
     });
 });
 
