@@ -10,11 +10,13 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="#">
+                <form action="{{ route('admin.kriteria.update', $villager->id) }}" method="post">
+                    @method('PUT')
+                    @csrf
                     <div class="form-group">
                         <label>{{ __('Nama') }}</label>
                         <input name="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                            value="{{ $villager->name }}" autocomplete="name" autofocus readonly>
+                            value="{{ $villager->name }}" autocomplete="name" autofocus>
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -25,7 +27,7 @@
                     <div class="form-group">
                         <label>{{ __('Sebagai') }}</label>
                         <input name="as" type="text" class="form-control @error('as') is-invalid @enderror"
-                            value="{{ $villager->as }}" autocomplete="as" autofocus readonly>
+                            value="{{ $villager->as }}" autocomplete="as" autofocus>
                         @error('as')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -36,7 +38,7 @@
                     <div class="form-group">
                         <label>{{ __('Nilai') }}</label>
                         <input name="value" type="text" class="form-control @error('value') is-invalid @enderror"
-                            value="{{ $villager->value }}" autocomplete="value" autofocus readonly>
+                            value="{{ $villager->value }}" autocomplete="value" autofocus>
                         @error('value')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -44,6 +46,7 @@
                         @enderror
                     </div>
 
+                    <input type="submit" class="btn btn-primary float-right" value="Ubah">
                 </form>
             </div>
         </div>

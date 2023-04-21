@@ -5,7 +5,14 @@
     <a class="nav-link" href="{{ route('admin.kriteria.index') }}">
         {{-- {{ route('obat.index') }} --}}
         <i class="far fa-pills"></i>
-        <span>{{__('Criteria')}}</span>
+        <span>{{__('Kriteria')}}</span>
+    </a>
+</li>
+<li class="{{ $active == 'villager' ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.warga.index') }}">
+        {{-- {{ route('obat.index') }} --}}
+        <i class="far fa-pills"></i>
+        <span>{{__('Warga Desa')}}</span>
     </a>
 </li>
 @endif
@@ -27,7 +34,7 @@
         <span>{{__('Obat')}}</span>
     </a>
 </li> --}}
-<li class="menu-header">{{__("Transaksi")}}</li>
+{{-- <li class="menu-header">{{__("Transaksi")}}</li> --}}
 {{-- <li class="{{ $active == 'order' ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('order.index') }}">
         <i class="far fa-tag"></i>

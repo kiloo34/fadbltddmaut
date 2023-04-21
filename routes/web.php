@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // Admin
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
+use App\Http\Controllers\Admin\VillagerController as AdminVillager;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,10 @@ Route::middleware(['auth'])->group(function () {
         // Criteria
         Route::resource('kriteria', AdminCriteria::class);
         Route::get('/allCriteria', [AdminCriteria::class, 'getAllData'])->name('criteria.all');
+
+        // Villager
+        Route::resource('warga', AdminVillager::class);
+        Route::get('/allVillager', [AdminVillager::class, 'getAllData'])->name('villager.all');
     });
 });
 
