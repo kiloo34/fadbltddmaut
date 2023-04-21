@@ -8,6 +8,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
 
+// Admin
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
+use App\Http\Controllers\Admin\VillagerController as AdminVillager;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,8 +38,11 @@ Route::middleware(['auth'])->group(function () {
         // Criteria
         Route::resource('kriteria', AdminCriteria::class);
         Route::get('/allCriteria', [AdminCriteria::class, 'getAllData'])->name('criteria.all');
+
+        // Villager
+        Route::resource('warga', AdminVillager::class);
+        Route::get('/allVillager', [AdminVillager::class, 'getAllData'])->name('villager.all');
     });
 });
 
-Route::get('/', [HomeController::class, 'index'])->name('landing');
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

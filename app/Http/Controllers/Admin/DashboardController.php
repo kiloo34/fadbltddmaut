@@ -9,10 +9,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // dd('masuk');
         return view('admin.dashboard.index', [
             'title' => 'dashboard',
             'subtitle' => '',
-            'active' => 'dashboard.index',
+            'data' => '',
+            'active' => 'dashboard',
         ]);
     }
 }
