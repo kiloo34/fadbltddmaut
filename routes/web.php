@@ -1,10 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\HomeController;
 
 // Admin
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
+
+// Admin
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
+use App\Http\Controllers\Admin\VillagerController as AdminVillager;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +23,6 @@ use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
@@ -35,6 +38,10 @@ Route::middleware(['auth'])->group(function () {
         // Criteria
         Route::resource('kriteria', AdminCriteria::class);
         Route::get('/allCriteria', [AdminCriteria::class, 'getAllData'])->name('criteria.all');
+
+        // Villager
+        Route::resource('warga', AdminVillager::class);
+        Route::get('/allVillager', [AdminVillager::class, 'getAllData'])->name('villager.all');
     });
 });
 

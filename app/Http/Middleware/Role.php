@@ -13,7 +13,7 @@ class Role
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next,  ...$role)
+    public function handle(Request $request, Closure $next,  ...$role): Response
     {
         // dd('masuk midleware', $request->user()->role->name);
         if (in_array($request->user()->role->name, $role)) {
