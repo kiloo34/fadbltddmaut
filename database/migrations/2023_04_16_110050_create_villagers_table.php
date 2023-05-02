@@ -16,10 +16,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('age');
             $table->string('dependent');
-            $table->string('job');
+            $table->unsignedBigInteger('job_id');
             $table->string('earnings');
-            $table->string('education');
+            $table->unsignedBigInteger('education_id');
             $table->string('condition');
+
+            $table->foreign('job_id')->references('id')->on('jobs');
+            $table->foreign('education_id')->references('id')->on('education');
+
             $table->timestamps();
         });
     }
