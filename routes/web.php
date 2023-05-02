@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
 use App\Http\Controllers\Admin\VillagerController as AdminVillager;
+use App\Http\Controllers\Admin\EducationController as AdminEducation;
+use App\Http\Controllers\Admin\JobController as AdminJob;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,14 @@ Route::middleware(['auth'])->group(function () {
         // Villager
         Route::resource('warga', AdminVillager::class);
         Route::get('/allVillager', [AdminVillager::class, 'getAllData'])->name('villager.all');
+
+        // Job
+        Route::resource('pekerjaan', AdminJob::class);
+        // Route::get('/allVillager', [AdminJob::class, 'getAllData'])->name('villager.all');
+
+        // Education
+        Route::resource('pendidikan', AdminEducation::class);
+        // Route::get('/allVillager', [AdminEducation::class, 'getAllData'])->name('villager.all');
     });
 });
 

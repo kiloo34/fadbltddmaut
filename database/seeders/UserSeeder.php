@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-	User::truncate();
-	User::insert([
+        User::truncate();
+        User::insert([
             [
                 'username' => 'admin',
                 'name' => 'admin',

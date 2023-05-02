@@ -14,8 +14,8 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-	Role::truncate();
-	Role::insert([
+        Role::truncate();
+        Role::insert([
             [
                 'name' => 'admin'
             ]

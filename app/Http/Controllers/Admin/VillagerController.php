@@ -96,20 +96,45 @@ class VillagerController extends Controller
                 ->addIndexColumn()
                 ->addColumn('name', function($row){
                     $name = '';
-                    $name = $row->name;
+                    $name = ucwords($row->name);
                     return $name;
                 })
-                ->addColumn('alias', function($row){
-                    $alias = '';
-                    $alias = ucwords($row->as);
-                    return $alias;
+                ->addColumn('age', function($row){
+                    $age = '';
+                    $age = $row->age;
+                    return $age;
+                })
+                ->addColumn('dependent', function($row){
+                    $dependent = '';
+                    $dependent = $row->dependent;
+                    return $dependent;
+                })
+                ->addColumn('job', function($row){
+                    $job = '';
+                    $job = ucwords($row->job->as);
+                    return $job;
+                })
+                ->addColumn('earnings', function($row){
+                    $earnings = '';
+                    $earnings = 'Rp. '.$row->earnings;
+                    return $earnings;
+                })
+                ->addColumn('education', function($row){
+                    $education = '';
+                    $education = ucwords($row->education->as);
+                    return $education;
+                })
+                ->addColumn('condition', function($row){
+                    $condition = '';
+                    $condition = $row->condition;
+                    return $condition;
                 })
                 ->addColumn('action', function($row){
-                    $actionBtn = '<a href="'.route("admin.kriteria.show", $row->id).'" class="btn btn-sm btn-info">
+                    $actionBtn = '<a href="'.route("admin.warga.show", $row->id).'" class="btn btn-sm btn-info">
                                     <i class="fas fa-eye"></i>
                                     Detail
                                 </a>
-                                <a href="'.route("admin.kriteria.edit", $row->id).'" class="btn btn-sm btn-info">
+                                <a href="'.route("admin.warga.edit", $row->id).'" class="btn btn-sm btn-info">
                                     <i class="fas fa-edit"></i>
                                     Edit
                                 </a>
