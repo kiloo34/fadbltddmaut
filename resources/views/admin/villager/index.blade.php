@@ -19,7 +19,12 @@
                             <thead>
                                 <th>{{__('No')}}</th>
                                 <th>{{__('Nama')}}</th>
-                                <th>{{__('Alias')}}</th>
+                                <th>{{__('Umur')}}</th>
+                                <th>{{__('Jumlah Tanggungan')}}</th>
+                                <th>{{__('Pekerjaan')}}</th>
+                                <th>{{__('Penghasilan')}}</th>
+                                <th>{{__('Pendidikan Terakhir')}}</th>
+                                <th>{{__('Sakti Kronis / Menahun / Difabel')}}</th>
                                 <th>{{__('Aksi')}}</th>
                             </thead>
                             <tbody></tbody>
@@ -41,12 +46,18 @@
             "responsive": true,
             "processing": true,
             "serverSide": true,
-            // "ajax": "{{ route('admin.criteria.all') }}",
+            "ajax": "{{ route('admin.villager.all') }}",
             "columns": [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'name', name: 'name'},
-                {data: 'alias', name: 'alias'},
+                {data: 'age', name: 'age'},
+                {data: 'dependent', name: 'dependent'},
+                {data: 'job', name: 'job'},
+                {data: 'earnings', name: 'earnings'},
+                {data: 'education', name: 'education'},
+                {data: 'condition', name: 'condition'},
                 {data: 'action', name: 'action'},
+                
             ]
         });
     });
