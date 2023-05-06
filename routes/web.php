@@ -7,10 +7,6 @@ use App\Http\Controllers\HomeController;
 // Admin
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
-
-// Admin
-use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
-use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
 use App\Http\Controllers\Admin\VillagerController as AdminVillager;
 use App\Http\Controllers\Admin\EducationController as AdminEducation;
 use App\Http\Controllers\Admin\JobController as AdminJob;
