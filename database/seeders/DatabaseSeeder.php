@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
 	    	RoleSeeder::class,
 	    	UserSeeder::class,
             CriteriaSeeder::class,
+            EducationSeeder::class,
+            JobSeeder::class,
+            VillagerSeeder::class
 	    ]);
     }
 }
