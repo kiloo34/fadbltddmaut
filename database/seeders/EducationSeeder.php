@@ -18,19 +18,33 @@ class EducationSeeder extends Seeder
         Education::insert([
             [
                 'name' => 'tidak_sekolah',
-                'as' => 'tidak sekolah'
+                'as' => 'tidak sekolah',
+                'type' => 5
             ],
             [
                 'name' => 'sd',
-                'as' => 'SD'
+                'as' => 'SD',
+                'type' => 4
             ],
             [
                 'name' => 'smp',
-                'as' => 'SMP / SLTP / Sederajat'
+                'as' => 'SMP / SLTP / Sederajat',
+                'type' => 3
             ],
             [
                 'name' => 'sma',
-                'as' => 'SMA / SLTA / Sederajat'
+                'as' => 'SMA / SLTA / Sederajat',
+                'type' => 2
+            ],
+            [
+                'name' => 'diploma',
+                'as' => 'diploma',
+                'type' => 1
+            ],
+            [
+                'name' => 'sarjana',
+                'as' => 'sarjana',
+                'type' => 1
             ],
         ]);
     }

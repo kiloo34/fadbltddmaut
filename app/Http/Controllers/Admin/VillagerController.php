@@ -5,13 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Villager\StoreVillagerRequest;
 use App\Http\Requests\Admin\Villager\UpdateVillagerRequest;
+use App\Models\Criteria;
+use App\Models\Education;
+use App\Models\Job;
 use App\Models\Villager;
+use App\Models\VillagerCriteria;
+use App\Traits\Helpers;
 use Illuminate\Http\Request;
 
 use Yajra\DataTables\DataTables;
 
+use function GuzzleHttp\Promise\all;
+
 class VillagerController extends Controller
 {
+    use Helpers;
     /**
      * Display a listing of the resource.
      */
@@ -91,7 +99,9 @@ class VillagerController extends Controller
     public function getAllData(Request $request)
     {
         if($request->ajax()) {
-            $data = Villager::all();        
+            $data = Villager::all();
+            // $villagerCriteria = VillagerCriteria::all();
+            // $criteria = Criteria::all();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('name', function($row){
@@ -130,11 +140,20 @@ class VillagerController extends Controller
                     return $condition;
                 })
                 ->addColumn('action', function($row){
-                    $actionBtn = '<a href="'.route("admin.warga.show", $row->id).'" class="btn btn-sm btn-info">
+                    $valueCount = VillagerCriteria::where('villager_id',$row->id)->count();
+                    $criteriaCount = Criteria::all()->count();
+                    $actionBtn = '';
+                    $btnTitle = $valueCount == $criteriaCount ? 'Ubah Nilai'  : 'Tambah Nilai';
+                    if ($valueCount == $criteriaCount) {
+                        $actionBtn .= '<a href="'.route("admin.warga.kriteriaValForm", $row->id).'" class="btn btn-sm btn-primary my-1 mr-1">
+                                        <i class="fas fa-plus"></i> '
+                                        . $btnTitle .
+                                    '</a>';
+                        $actionBtn .= '<a href="'.route("admin.warga.show", $row->id).'" class="btn btn-sm btn-info my-1">
                                     <i class="fas fa-eye"></i>
                                     Detail
                                 </a>
-                                <a href="'.route("admin.warga.edit", $row->id).'" class="btn btn-sm btn-info">
+                                <a href="'.route("admin.warga.edit", $row->id).'" class="btn btn-sm btn-info my-1">
                                     <i class="fas fa-edit"></i>
                                     Edit
                                 </a>
@@ -142,6 +161,25 @@ class VillagerController extends Controller
                                     <i class="fas fa-edit"></i>
                                     Hapus
                                 </a>';
+                    } else {
+                        $actionBtn .= '<a href="'.route("admin.warga.show", $row->id).'" class="btn btn-sm btn-info my-1">
+                                            <i class="fas fa-eye"></i>
+                                                Detail
+                                        </a>
+                                        <a href="'.route("admin.warga.edit", $row->id).'" class="btn btn-sm btn-info my-1">
+                                            <i class="fas fa-edit"></i>
+                                            Edit
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-edit"></i>
+                                            Hapus
+                                        </a>';
+                        $actionBtn .= '<a href="'.route("admin.warga.kriteriaValForm", $row->id).'" class="btn btn-sm btn-primary my-1">
+                                        <i class="fas fa-plus"></i> '
+                                        . $btnTitle .
+                                    '</a>';
+                    }
+
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
@@ -149,5 +187,117 @@ class VillagerController extends Controller
         } else {
             return response()->json(['text'=>'only ajax request']);
         }
+    }
+
+    public function kriteriaVal()
+    {
+        dump('masuk');
+        dd();
+        $criteria = Criteria::all();
+        $villager = Villager::all();
+        $data = VillagerCriteria::all();
+        
+        return view('admin.villager.kriteriavillager', [
+            'title' => 'warga',
+            'subtitle' => '',
+            'criteria' => $criteria,
+            'villager' => $villager,
+            'data' => $data,
+            'active' => 'kriteriavillager',
+        ]);
+    }
+
+    public function formValue(Villager $warga)
+    {
+        $criteria = Criteria::all();
+        // $data = VillagerCriteria::all();
+        // dump($criteria);
+        // dd();
+        
+        return view('admin.villager.kriteriaVillagerForm', [
+            'title' => 'warga',
+            'subtitle' => '',
+            'criterias' => $criteria,
+            'warga' => $warga,
+            'pendidikan' => Education::all(),
+            'job' => Job::all(),
+            'active' => 'kriteriavillager',
+        ]);
+    }
+
+    public function storeKriteriaVal(Request $request, Villager $warga) 
+    {
+        $criterias = Criteria::all();
+
+        $name = $request->name;
+        $id = $request->id;
+
+        $msg = '';
+
+        if (count($name) == count($id)) {
+            for ($i=1; $i <= count($id); $i++) {
+                $conversion = '';
+
+                if (isset($name[$i])) {
+                    switch ($criterias[$i-1]) {
+                        case $criterias->where('id', $id[$i])->first()->code == 'A1':
+                            $conversion = $this->pendidikanCheck($name[$i]);
+                            break;
+                        
+                        case $criterias->where('id', $id[$i])->first()->code == 'A2':
+                            $conversion = $this->tanggunganCheck($name[$i]);
+                            break;
+                        
+                        case $criterias->where('id', $id[$i])->first()->code == 'A3':
+                            $conversion = $this->pekerjaanCheck($name[$i]);
+                            break;
+                        
+                        case $criterias->where('id', $id[$i])->first()->code == 'A4':
+                            $conversion = $this->umurCheck($name[$i]);
+                            break;
+
+                        case $criterias->where('id', $id[$i])->first()->code == 'A5':
+                            $conversion = $this->penghasilanCheck($name[$i]);
+                            break;
+                        
+                        case $criterias->where('id', $id[$i])->first()->code == 'A6';
+                            $conversion = $this->riwayatPenyakitCheck((int) $name[$i]);
+                            break;
+
+                    }
+                    $this->storeDataVillagerCriteria($warga->id, $id[$i], $name[$i], $conversion);
+                    $msg = 'Data Kriteria Penduduk ' . $warga->name .' berhasil ditambah';
+                } 
+                else {
+                    $msg = "Form Harus Diisi";
+                    return redirect()->back()->with('error_msg', $msg);            
+                }
+            }
+        } else {
+            $msg = 'Internal server error';
+        }
+        return redirect()->route('admin.warga.index')->with('success_msg', $msg);
+    }
+
+    protected function storeDataVillagerCriteria($warga, $criteria, $value, $conversion)
+    {
+        VillagerCriteria::updateOrCreate(
+            [
+                'villager_id' => $warga,
+                'criteria_id' => $criteria,
+            ],
+            [
+                'value' => $value,
+                'conversion' => $conversion,
+                'created_by' => auth()->user()->id,
+                'updated_by' => auth()->user()->id
+            ]
+        );
+        // HistoryCatinCriteria::create([
+        //     'catin_id' => $warga,
+        //     'criteria_id' => $criteria,
+        //     'value' => $value,
+        //     'conversion' => $conversion,
+        // ]);
     }
 }
