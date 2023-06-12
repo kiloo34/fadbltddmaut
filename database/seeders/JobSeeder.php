@@ -18,24 +18,53 @@ class JobSeeder extends Seeder
         Job::insert([
             [
                 'name' => 'tidak_bekerja',
-                'as' => 'tidak bekerja'
+                'as' => 'tidak bekerja',
+                'type' => 5
             ],
             [
                 'name' => 'wiraswasta',
-                'as' => 'wiraswasta'
+                'as' => 'wiraswasta',
+                'type' => 3
             ],
             [
                 'name' => 'buruh',
-                'as' => 'buruh'
+                'as' => 'buruh',
+                'type' => 3
             ],
             [
                 'name' => 'petani',
-                'as' => 'petani'
+                'as' => 'petani',
+                'type' => 3
+            ],
+            [
+                'name' => 'honorer',
+                'as' => 'honorer',
+                'type' => 3
             ],
             [
                 'name' => 'wirausaha',
-                'as' => 'wirausaha'
-            ]
+                'as' => 'wirausaha',
+                'type' => 3
+            ],
+            [
+                'name' => 'karyawan swasta',
+                'as' => 'karyawan_swasta',
+                'type' => 3
+            ],
+            [
+                'name' => 'guru',
+                'as' => 'guru',
+                'type' => 1
+            ],
+            [
+                'name' => 'pensiunan',
+                'as' => 'pensiunan',
+                'type' => 1
+            ],
+
+            // Buruh, petani, wiraswasta dan karyawan swasta 
         ]);
     }
 }
+
+

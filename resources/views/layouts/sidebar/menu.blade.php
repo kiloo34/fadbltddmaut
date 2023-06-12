@@ -3,16 +3,20 @@
 @if (auth()->user()->role->name == 'admin')
 <li class="{{ $active == 'criteria' ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.kriteria.index') }}">
-        {{-- {{ route('obat.index') }} --}}
         <i class="far fa-pills"></i>
         <span>{{__('Kriteria')}}</span>
     </a>
 </li>
 <li class="{{ $active == 'villager' ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.warga.index') }}">
-        {{-- {{ route('obat.index') }} --}}
         <i class="far fa-pills"></i>
         <span>{{__('Warga Desa')}}</span>
+    </a>
+</li>
+<li class="{{ $active == 'spk' ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.spk.index') }}">
+        <i class="far fa-pills"></i>
+        <span>{{__('SPK')}}</span>
     </a>
 </li>
 @endif

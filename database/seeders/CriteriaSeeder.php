@@ -19,32 +19,38 @@ class CriteriaSeeder extends Seeder
             [
                 'name' => 'pendidikan',
                 'value' => 1,
-                'as' => 'pendidikan'
+                'as' => 'pendidikan',
+                'code' => 'A1'
             ],
             [
                 'name' => 'jumlah_tanggungan',
                 'value' => 4,
-                'as' => 'jumlah tanggungan'
+                'as' => 'jumlah tanggungan',
+                'code' => 'A2'
             ],
             [
                 'name' => 'pekerjaan',
                 'value' => 2,
-                'as' => 'pekerjaan'
+                'as' => 'pekerjaan',
+                'code' => 'A3'
             ],
             [
                 'name' => 'umur',
                 'value' => 5,
-                'as' => 'umur'
+                'as' => 'umur',
+                'code' => 'A4'
             ],
             [
                 'name' => 'penghasilan',
                 'value' => 3,
-                'as' => 'penghasilan'
+                'as' => 'penghasilan',
+                'code' => 'A5'
             ],
             [
                 'name' => 'riwayat_penyakit',
                 'value' => 6,
-                'as' => 'riwayat penyakit'
+                'as' => 'sakit kronis / menahun / difabel',
+                'code' => 'A6'
             ],
         ]);
     }

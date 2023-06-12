@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('as');
+            $table->string('type')->comment('conversion of string name');
             $table->timestamps();
         });
     }

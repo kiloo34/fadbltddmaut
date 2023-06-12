@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CriteriaController as AdminCriteria;
 use App\Http\Controllers\Admin\VillagerController as AdminVillager;
 use App\Http\Controllers\Admin\EducationController as AdminEducation;
 use App\Http\Controllers\Admin\JobController as AdminJob;
+use App\Http\Controllers\Admin\SpkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,10 @@ Route::middleware(['auth'])->group(function () {
 
         // Villager
         Route::resource('warga', AdminVillager::class);
+        Route::get('/warga/kriteriaVal', [AdminVillager::class, 'kriteriaVal'])->name('warga.kriteriaVal');
+        Route::get('/warga/{warga}/kriteriaValForm', [AdminVillager::class, 'formValue'])->name('warga.kriteriaValForm');
+        Route::post('/warga/{warga}/kriteriaValForm', [AdminVillager::class, 'storeKriteriaVal'])->name('warga.storeKriteriaVal');
+        // ajax
         Route::get('/allVillager', [AdminVillager::class, 'getAllData'])->name('villager.all');
 
         // Job
@@ -48,7 +53,11 @@ Route::middleware(['auth'])->group(function () {
         // Education
         Route::resource('pendidikan', AdminEducation::class);
         // Route::get('/allVillager', [AdminEducation::class, 'getAllData'])->name('villager.all');
+
+        // SPK
+        Route::get('/spk', [SpkController::class, 'index'])->name('spk.index');
+        Route::get('/spk/calculate', [SpkController::class, 'calculate'])->name('spk.calculate');
     });
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
