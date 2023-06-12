@@ -43,6 +43,7 @@
             "language": {
                 "emptyTable": "Data Penduduk Desa Kosong"
             },
+            "iDisplayLength": 100,
             "responsive": true,
             "processing": true,
             "serverSide": true,

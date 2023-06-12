@@ -21,8 +21,9 @@
                         <label for="catinName" class="col-sm-2 col-form-label">{{ucfirst($kriteria->as)}}</label>
                         @if ($kriteria->name == 'pekerjaan')
                         <div class="col-sm-10">
-                            <select class="form-control @error($kriteria->name) is-invalid @enderror" name="name[{{$kriteria->id}}]">
-                                <option value="">Pilih Jawaban</option>
+                            <select class="form-control @error($kriteria->name) is-invalid @enderror" name="name[{{$kriteria->id}}]" >
+                                {{-- <option value="">Pilih Jawaban</option> --}}
+                                <option value="{{ $warga->job->id }}">{{ $warga->job->as }}</option>
                                 @foreach ($job as $item)
                                 <option value="{{$item->id}}">{{$item->as}}</option>
                                 @endforeach
@@ -31,15 +32,52 @@
                         @elseif($kriteria->name == 'pendidikan')
                         <div class="col-sm-10">
                             <select class="form-control @error($kriteria->name) is-invalid @enderror" name="name[{{$kriteria->id}}]" id="">
-                                <option value="">Pilih Jawaban</option>
+                                {{-- <option value="">Pilih Jawaban</option> --}}
+                                <option value="{{ $warga->education->id }}">{{ $warga->education->as }}</option>
                                 @foreach ($pendidikan as $item)
                                 <option value="{{$item->id}}">{{$item->as}}</option>
                                 @endforeach
                             </select>
                         </div>
+                        @elseif($kriteria->name == 'jumlah_tanggungan')
+                        <div class="col-sm-10">
+                            <input type="text" name="name[{{$kriteria->id}}]" class="form-control @error($kriteria->name) is-invalid @enderror" placeholder="{{ ucfirst($warga->dependent) }}" value="{{ $warga->dependent }}">
+                            @error($kriteria->name)
+                            <span class="error invalid-feedback">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        @elseif($kriteria->name == 'umur')
+                        <div class="col-sm-10">
+                            <input type="text" name="name[{{$kriteria->id}}]" class="form-control @error($kriteria->name) is-invalid @enderror" placeholder="{{ ucfirst($warga->age) }}" value="{{ $warga->age }}">
+                            @error($kriteria->name)
+                            <span class="error invalid-feedback">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        @elseif($kriteria->name == 'penghasilan')
+                        <div class="col-sm-10">
+                            <input type="text" name="name[{{$kriteria->id}}]" class="form-control @error($kriteria->name) is-invalid @enderror" placeholder="{{ ucfirst($warga->earnings) }}" value="{{ $warga->earnings }}">
+                            @error($kriteria->name)
+                            <span class="error invalid-feedback">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        @elseif($kriteria->name == 'riwayat_penyakit')
+                        <div class="col-sm-10">
+                            <input type="text" name="name[{{$kriteria->id}}]" class="form-control @error($kriteria->name) is-invalid @enderror" placeholder="{{ ucfirst($warga->condition) }}" value="{{ $warga->condition }}">
+                            @error($kriteria->name)
+                            <span class="error invalid-feedback">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                         @else
                         <div class="col-sm-10">
-                            <input type="text" name="name[{{$kriteria->id}}]" class="form-control @error($kriteria->name) is-invalid @enderror" id="catinName" placeholder="{{strtoupper($kriteria->name)}}" value="{{ old($kriteria->name) }}">
+                            <input type="text" name="name[{{$kriteria->id}}]" class="form-control @error($kriteria->name) is-invalid @enderror" placeholder="{{ ucfirst($kriteria->name) }}" value="{{ old($kriteria->name) }}">
                             @error($kriteria->name)
                             <span class="error invalid-feedback">
                                 <strong>{{ $message }}</strong>

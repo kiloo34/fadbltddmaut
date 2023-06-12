@@ -174,7 +174,7 @@ class VillagerController extends Controller
                                             <i class="fas fa-edit"></i>
                                             Hapus
                                         </a>';
-                        $actionBtn .= '<a href="'.route("admin.warga.kriteriaValForm", $row->id).'" class="btn btn-sm btn-primary my-1">
+                        $actionBtn .= '<a href="'.route("admin.warga.kriteriaValForm", $row->id).'" class="btn btn-sm btn-primary my-1 mx-1">
                                         <i class="fas fa-plus"></i> '
                                         . $btnTitle .
                                     '</a>';
