@@ -18,10 +18,10 @@ trait Helpers {
         $res = '';
         if ($value > 2) {
             $res = 5;
-        } elseif ($value == 1) {
-            $res = 3;
-        } else {
+        } elseif ($value == 0) {
             $res = 1;
+        } else {
+            $res = 3;
         }
         return $res;
     }
