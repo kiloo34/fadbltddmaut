@@ -46,17 +46,18 @@ class SpkController extends Controller
         $res = [];
 
         $data = [];
+        $sortData = [];
 
         for ($i=0; $i < count($villagerData); $i++) { 
             $data[$i]['villager']['id'] = $villagerData[$i]->id ;
             $data[$i]['villager']['name'] = $villagerData[$i]->name ;
             for ($j=0; $j < count($criteria); $j++) { 
-                // dump($villagerData[$i]->id, $criteria[$j]->id);
+
                 $res = $criteriaData->where('criteria_id', $criteria[$j]->id)->where('villager_id', $villagerData[$i]->id)->first();
-                // dump($res);
+
                 $a[$i][$j] = $res->conversion;
                 $val = $criteriaData->where('criteria_id', $criteria[$j]->id)->pluck('conversion');
-                // dump($val);
+
                 $min[$i] = $this->minVal($val->toArray());
                 $max[$i] = $this->maxVal($val->toArray());
                 $aCalculate[$i][$j] = $this->countA($a[$i][$j], $min[$i], $max[$i]);
@@ -71,9 +72,17 @@ class SpkController extends Controller
             $data[$i]['value'] = $this->rank($data[$i]['aCalculate'], $criteria);
         }
 
-        // dump($data);
-        // dump($villagerData);
-        // dd('masuk');
+        foreach($data as $item) {
+            foreach($item as $key => $value){
+                if(!isset($sortData[$key])){
+                    $sortData[$key] = array();
+                }
+                $sortData[$key][] = $value;
+            }
+        }
+
+        array_multisort($sortData['value'], SORT_DESC, $data);
+
         return response()->json($data);
     }
 }

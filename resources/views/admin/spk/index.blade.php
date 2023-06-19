@@ -43,17 +43,17 @@
         var html = ''
 
         url = "{{ route('admin.spk.calculate') }}"
-        // console.log(url)
+        console.log(url)
         $.ajax({
             type: "get",
             url: url,
             success: function (response) {
                 console.log(response);
-                jQuery.each(response.data, function(index, itemData) {
-                    console.log(itemData.village);
+                jQuery.each(response, function(index, itemData) {
+                    // console.log(itemData.villager);
                     
-                    var id = itemData.village.id
-                    var url = ''
+                    var id = itemData.villager.id
+                    var url = "{{ route('admin.warga.show', ":id") }}"
                     url = url.replace(':id', id)
 
                     html += '<div class="col-md-4">'
@@ -63,18 +63,18 @@
                     html += '<h1>'+(index+1)+'</h1>'
                     html += '</div>'
                     html += '<a href='+url+' type="button" class="">'
-                    html += '<h3 class="widget-user-username">'+itemData.village.name+'</h3>'
+                    html += '<h3 class="widget-user-username">'+itemData.villager.name+'</h3>'
                     html += '</a>'
                     // html += '<h5 class="widget-user-desc">'+itemData.village.desa+'</h5>'
                     // html += '<h5 class="widget-user-desc"> Nilai : '+itemData.value+'</h5>'
 
-                    if (itemData.value > 0.8) {
-                        html += '<h5 class="widget-user-desc text-danger"> Perlu Pendampingan Intensitas Tinggi </h5>';
-                    } else if (itemData.value >= 0.4 && itemData.value <= 0.8) {
-                        html += '<h5 class="widget-user-desc text-warning"> Perlu Pendampingan Intensitas Sedang </h5>';
-                    } else {
-                        html += '<h5 class="widget-user-desc text-primary"> Perlu Pendampingan Intensitas Rendah </h5>';
-                    }
+                    // if (itemData.value > 0.8) {
+                    //     html += '<h5 class="widget-user-desc text-danger"> Perlu Pendampingan Intensitas Tinggi </h5>';
+                    // } else if (itemData.value >= 0.4 && itemData.value <= 0.8) {
+                    //     html += '<h5 class="widget-user-desc text-warning"> Perlu Pendampingan Intensitas Sedang </h5>';
+                    // } else {
+                    //     html += '<h5 class="widget-user-desc text-primary"> Perlu Pendampingan Intensitas Rendah </h5>';
+                    // }
 
                     html += '</div>'
                     html += '</div>'
