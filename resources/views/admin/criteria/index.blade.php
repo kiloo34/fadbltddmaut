@@ -49,8 +49,64 @@
                 {data: 'action', name: 'action'},
             ]
         });
+
+        $('.hapus-kriteria').on('click', function (e) {
+            e.preventDefault();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var id = $(this).data("id");
+            
+            url = url.replace(':id', id);
+            $object=$(this);
+
+            console.log(id);
+        });
+
     });
 </script>
 @endpush
 
 @include('import.datatable')
+
+{{-- // hapus-kriteria
+//         var url = $('.hapus').attr('href');
+//         var url = "{{ route('obat.destroy', ":id") }}";
+//         Swal.fire({
+//             title: 'Are you sure?',
+//             text: "Yakin ingin menghapus Data Obat ini!",
+//             icon: 'warning',
+//             showCancelButton: true,
+//             confirmButtonColor: '#3085d6',
+//             cancelButtonColor: '#d33',
+//             confirmButtonText: 'Ya!'
+//         }).then((result) => {
+//             if (result.value) {
+//                 $.ajax({
+//                     url: url,
+//                     type: 'DELETE',
+//                     data: {id: id},
+//                     success: function (response) {
+//                         $($object).parents('tr').remove();
+//                         Swal.fire({
+//                             title: "Data Dihapus!",
+//                             text: response.message,
+//                             icon: 'success',
+//                         });
+//                         setTimeout(function () { 
+//                             location.reload();
+//                         }, 2500)
+//                     },
+//                     error: function (data) {
+//                         Swal.fire({
+//                             title: "Data Gagal Dihapus!",
+//                             icon: 'error',
+//                         })
+//                     }
+//                 });
+//             }
+//         }); --}}

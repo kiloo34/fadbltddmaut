@@ -43,11 +43,12 @@
         var html = ''
 
         url = "{{ route('admin.spk.calculate') }}"
-        console.log(url)
+        // console.log(url)
         $.ajax({
             type: "get",
             url: url,
             success: function (response) {
+                console.log(response);
                 jQuery.each(response.data, function(index, itemData) {
                     console.log(itemData.village);
                     

@@ -24,10 +24,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label>{{ __('Sebagai') }}</label>
-                        <input name="as" type="text" class="form-control @error('as') is-invalid @enderror"
-                            value="{{ old('as') }}" autocomplete="as" autofocus>
-                        @error('as')
+                        <label>{{ __('Pendidikan') }}</label>
+                        <select class="form-control @error('education') is-invalid @enderror" name="education" id="">
+                            <option value="">Pilih Jawaban</option>
+                            {{-- <option value="{{ $warga->education->id }}">{{ $warga->education->as }}</option> --}}
+                            @foreach ($pendidikan as $item)
+                            <option value="{{$item->id}}">{{$item->as}}</option>
+                            @endforeach
+                        </select>
+                        @error('education')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -35,11 +40,56 @@
                     </div>
 
                     <div class="form-group">
-                        <label>{{ __('Nilai') }}</label>
-                        <input name="value" type="text" class="form-control @error('value') is-invalid @enderror"
-                            value="{{ old('value') }}" autocomplete="value" autofocus>
-                        @error('value')
+                        <label>{{ __('Pekerjaan') }}</label>
+                        <select class="form-control @error('job') is-invalid @enderror" name="job" id="">
+                            <option value="">Pilih Jawaban</option>
+                            {{-- <option value="{{ $warga->education->id }}">{{ $warga->education->as }}</option> --}}
+                            @foreach ($pekerjaan as $item)
+                            <option value="{{$item->id}}">{{$item->as}}</option>
+                            @endforeach
+                        </select>
+                        @error('job')
                         <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{ __('Jummlah Tanggungan') }}</label>
+                        <input type="text" name="dependent" class="form-control @error('dependent') is-invalid @enderror">
+                        @error('dependent')
+                        <span class="error invalid-feedback">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>{{ __('Umur') }}</label>
+                        <input type="text" name="age" class="form-control @error('age') is-invalid @enderror">
+                        @error('age')
+                        <span class="error invalid-feedback">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{ __('Penghasilan') }}</label>
+                        <input type="text" name="earnings" class="form-control @error('earnings') is-invalid @enderror">
+                        @error('earnings')
+                        <span class="error invalid-feedback">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{ __('Riwayat Penyakit / Menahun / Difable') }}</label>
+                        <input type="text" name="condition" class="form-control @error('condition') is-invalid @enderror">
+                        @error('condition')
+                        <span class="error invalid-feedback">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror

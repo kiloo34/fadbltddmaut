@@ -38,11 +38,15 @@ class VillagerController extends Controller
      */
     public function create()
     {
+        $pendidikan = Education::all();
+        $pekerjaan = Job::all();
         return view('admin.villager.create', [
-            'title'     => 'warga',
-            'subtitle'  => 'create',
-            'data'      => '',
-            'active'    => 'village',
+            'title'         => 'warga',
+            'subtitle'      => 'create',
+            'data'          => '',
+            'active'        => 'village',
+            'pendidikan'    => $pendidikan,
+            'pekerjaan'     => $pekerjaan
         ]);
     }
 
@@ -72,11 +76,15 @@ class VillagerController extends Controller
      */
     public function edit(Villager $warga)
     {
+        $pendidikan = Education::all();
+        $pekerjaan = Job::all();
         return view('admin.villager.edit', [
-            'title'     => 'warga',
-            'subtitle'  => 'detail',
-            'villager'  => $warga,
-            'active'    => 'village',
+            'title'         => 'warga',
+            'subtitle'      => 'detail',
+            'villager'      => $warga,
+            'active'        => 'village',
+            'pendidikan'    => $pendidikan,
+            'pekerjaan'     => $pekerjaan
         ]);
     }
 

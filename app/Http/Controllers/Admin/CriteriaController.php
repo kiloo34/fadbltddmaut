@@ -128,7 +128,7 @@ class CriteriaController extends Controller
                                     <i class="fas fa-edit"></i>
                                     Edit
                                 </a>
-                                <a href="#" class="btn btn-sm btn-danger">
+                                <a href="'.route("admin.kriteria.destroy", $row->id).'" class="btn btn-sm btn-danger hapus-kriteria" data-id="'.$row->id.'">
                                     <i class="fas fa-edit"></i>
                                     Hapus
                                 </a>';
