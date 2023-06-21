@@ -871,29 +871,186 @@ class VillagerSeeder extends Seeder
                 'education_id' => 2,
                 'condition' => 2
             ],
+            [
+                'name' => "JUNAIDI",
+                'age' => 30,
+                'dependent' => 0,
+                'job_id' => 3,
+                'earnings' => 80000,
+                'education_id' => 4,
+                'condition' => 0
+            ],
+            [
+                'name' => "ROSITA DEWI",
+                'age' => 34,
+                'dependent' => 2,
+                'job_id' => 3,
+                'earnings' => 50000,
+                'education_id' => 2,
+                'condition' => 0
+            ],
+            [
+                'name' => "HARIS KURNIAWAN",
+                'age' => 30,
+                'dependent' => 5,
+                'job_id' => 1,
+                'earnings' => 0,
+                'education_id' => 3,
+                'condition' => 0
+            ],
+            [
+                'name' => "MARTONO",
+                'age' => 53,
+                'dependent' => 0,
+                'job_id' => 4,
+                'earnings' => 70000,
+                'education_id' => 2,
+                'condition' => 0
+            ],
+            [
+                'name' => "TOPEK",
+                'age' => 57,
+                'dependent' => 5,
+                'job_id' => 2,
+                'earnings' => 50000,
+                'education_id' => 2,
+                'condition' => 0
+            ],
+            [
+                'name' => "FIRMAN BETA ALIVYANTO",
+                'age' => 24,
+                'dependent' => 2,
+                'job_id' => 7,
+                'earnings' => 40000,
+                'education_id' => 6,
+                'condition' => 0
+            ],
+            [
+                'name' => "RUKYATI",
+                'age' => 54,
+                'dependent' => 1,
+                'job_id' => 4,
+                'earnings' => 60000,
+                'education_id' => 2,
+                'condition' => 2
+            ],
+            [
+                'name' => "SITTI KOMARIYA",
+                'age' => 34,
+                'dependent' => 4,
+                'job_id' => 2,
+                'earnings' => 80000,
+                'education_id' => 4,
+                'condition' => 0
+            ],
+            [
+                'name' => "SAMSUL",
+                'age' => 66,
+                'dependent' => 2,
+                'job_id' => 4,
+                'earnings' => 60000,
+                'education_id' => 2,
+                'condition' => 0
+            ],
+            [
+                'name' => "YUNUS",
+                'age' => 46,
+                'dependent' => 1,
+                'job_id' => 2,
+                'earnings' => 65000,
+                'education_id' => 2,
+                'condition' => 0
+            ],
+            [
+                'name' => "SUMANNAN EFFENDI",
+                'age' => 58,
+                'dependent' => 2,
+                'job_id' => 4,
+                'earnings' => 60000,
+                'education_id' => 2,
+                'condition' => 1
+            ],
+            [
+                'name' => "SUYA",
+                'age' => 32,
+                'dependent' => 0,
+                'job_id' => 4,
+                'earnings' => 60000,
+                'education_id' => 2,
+                'condition' => 1
+            ],
+            [
+                'name' => "SUTIJA",
+                'age' => 24,
+                'dependent' => 0,
+                'job_id' => 4,
+                'earnings' => 60000,
+                'education_id' => 1,
+                'condition' => 1
+            ],
+            [
+                'name' => "DINI",
+                'age' => 59,
+                'dependent' => 2,
+                'job_id' => 2,
+                'earnings' => 50000,
+                'education_id' => 2,
+                'condition' => 0
+            ],
+            [
+                'name' => "NINDA SARI WULAN DWI SEPTIANA PUTRI",
+                'age' => 59,
+                'dependent' => 3,
+                'job_id' => 1,
+                'earnings' => 0,
+                'education_id' => 2,
+                'condition' => 0
+            ],
+            [
+                'name' => "ARBAIYA",
+                'age' => 73,
+                'dependent' => 1,
+                'job_id' => 1,
+                'earnings' => 0,
+                'education_id' => 1,
+                'condition' => 2
+            ],
+            [
+                'name' => "SUWARTI",
+                'age' => 65,
+                'dependent' => 5,
+                'job_id' => 2,
+                'earnings' => 40000,
+                'education_id' => 2,
+                'condition' => 1
+            ],
+            [
+                'name' => "SULAMA",
+                'age' => 78,
+                'dependent' => 1,
+                'job_id' => 3,
+                'earnings' => 60000,
+                'education_id' => 2,
+                'condition' => 1
+            ],
+            [
+                'name' => "SUBAENAH",
+                'age' => 42,
+                'dependent' => 1,
+                'job_id' => 2,
+                'earnings' => 30000,
+                'education_id' => 2,
+                'condition' => 0
+            ],
+            [
+                'name' => "SAYATI",
+                'age' => 41,
+                'dependent' => 0,
+                'job_id' => 3,
+                'earnings' => 60000,
+                'education_id' => 2,
+                'condition' => 0
+            ],
         ]);
     }
 }
-// JUNAIDI 	30	0	wiraswasta	80000	slta	0
-// ROSITA DEWI	34	2	wiraswasta	50000	sd	0
-// HARIS KURNIAWAN	30	1	-	0	sltp	0
-// MARTONO	53	0	petani	70000	sd	0
-// TOPEK	57	5	wiraswasta	50000	sd	0
-
-// FIRMAN BETA ALIVYANTO	24	2	karyawan swasta	40000	sarjana	0
-// RUKYATI	54	1	petani	60000	sd	2
-// SITTI KOMARIYA                                              	34	4	wiraswasta	80000	slta	0
-// SAMSUL	66	2	petani	60000	sd	0
-// YUNUS	46	1	wiraswasta	65000	sd	0
-
-// SUMANNAN EFFENDI	58	2	petani	60000	sd	1
-// SUYA	32	0	petani	60000	sd	1
-// SUTIJA	24	0	petani	60000	-	1
-// DINI	59	2	wiraswasta	50000	sd	0
-// NINDA SARI WULAN DWI SEPTIANA PUTRI	59	3	-	0	sd	0
-
-// ARBAIYA	73	1	-	0	-	2
-// SUWARTI	65	5	wiraswasta	40000	sd	1
-// SULAMA	78	1	buruh	60000	sd	1
-// SUBAENAH	42	1	wiraswasta	30000	sd	0
-// SAYATI	41	0	buruh	60000	sd	0
