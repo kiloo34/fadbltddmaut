@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.kriteria.update', $villager->id) }}" method="post">
+                <form action="{{ route('admin.warga.update', $villager->id) }}" method="post">
                     @method('PUT')
                     @csrf
                     <div class="form-group">

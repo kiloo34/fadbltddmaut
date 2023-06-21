@@ -35,9 +35,6 @@ class SpkController extends Controller
         // $criteria = $this->getCriteria();
         // $count = $this->countCatinCriteria($villager->toArray());
 
-        // dump($villagerData);
-        // dd();
-
         $a = [];
         $min = [];
         $max = [];
@@ -57,18 +54,19 @@ class SpkController extends Controller
 
                 $a[$i][$j] = $res->conversion;
                 $val = $criteriaData->where('criteria_id', $criteria[$j]->id)->pluck('conversion');
-
-                $min[$i] = $this->minVal($val->toArray());
-                $max[$i] = $this->maxVal($val->toArray());
-                $aCalculate[$i][$j] = $this->countA($a[$i][$j], $min[$i], $max[$i]);
+                
+                $min[$i][$j] = $this->minVal($val->toArray());
+                $max[$i][$j] = $this->maxVal($val->toArray());
+                $aCalculate[$i][$j] = $this->countA($a[$i][$j], $min[$i][$j], $max[$i][$j]);
                 
                 $data[$i]['a'][$j] = $a[$i][$j];
                 $data[$i]['aCalculate'][$j] = $aCalculate[$i][$j];
-                $data[$i]['min'] = $min[$i];
-                $data[$i]['max'] = $max[$i];
+                $data[$i]['min'][$j] = $min[$i][$j];
+                $data[$i]['max'][$j] = $max[$i][$j];
+                $range[$i][$j] = $this->range($max[$i][$j], $min[$i][$j]);
+                $data[$i]['range'][$j] = $range[$i][$j];
             }
-            $range[$i] = $this->range($max[$i], $min[$i]);
-            $data[$i]['range'] = $range[$i];
+
             $data[$i]['value'] = $this->rank($data[$i]['aCalculate'], $criteria);
         }
 

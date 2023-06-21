@@ -91,9 +91,21 @@ class VillagerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVillagerRequest $request, string $id)
-    {
-        //
+    public function update(UpdateVillagerRequest $request, Villager $warga)
+    {   
+
+        $warga->name = $request->name;
+        $warga->education_id = $request->education;
+        $warga->job_id = $request->job;
+        $warga->dependent = $request->dependent;
+        $warga->age = $request->age;
+        $warga->earnings = $request->earnings;
+        $warga->condition = $request->condition;
+
+        $warga->save();
+
+        $msg = 'Data Penduduk ' . $warga->name .' berhasil ditambah';
+        return redirect()->route('admin.warga.index')->with('success_msg', $msg);
     }
 
     /**

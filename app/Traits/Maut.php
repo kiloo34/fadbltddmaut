@@ -32,6 +32,7 @@ trait Maut {
     public function rank($aCalArray, $criteriaArray)
     {
         $res = 0;
+        $total = 0;
         if (count($aCalArray) == count($criteriaArray)) {
             $total = Criteria::sum('value');
             for ($i=0; $i < count($criteriaArray); $i++) { 

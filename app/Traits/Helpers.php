@@ -16,7 +16,7 @@ trait Helpers {
     protected function tanggunganCheck($value) 
     {
         $res = '';
-        if ($value > 2) {
+        if ($value >= 2) {
             $res = 5;
         } elseif ($value == 0) {
             $res = 1;
@@ -47,19 +47,15 @@ trait Helpers {
     protected function penghasilanCheck($value) 
     {
         $res = '';
-        switch ($value) {
-            case $value < 20000:
-                $res = 5;
-                break;
 
-            case $value > 40000:
-                $res = 1;
-                break;
-            
-            default:
-                $res = 3;
-                break;
+        if ($value < 20000) {
+            $res = 5;
+        } elseif ($value > 40000) {
+            $res = 1;
+        } else {
+            $res = 3;
         }
+
         return $res;
     }
 
