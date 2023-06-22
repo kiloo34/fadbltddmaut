@@ -66,7 +66,7 @@
                     html += '<h3 class="widget-user-username">'+itemData.villager.name+'</h3>'
                     html += '</a>'
                     // html += '<h5 class="widget-user-desc">'+itemData.village.desa+'</h5>'
-                    // html += '<h5 class="widget-user-desc"> Nilai : '+itemData.value+'</h5>'
+                    html += '<h5 class="widget-user-desc"> Nilai : '+itemData.value+'</h5>'
 
                     // if (itemData.value > 0.8) {
                     //     html += '<h5 class="widget-user-desc text-danger"> Perlu Pendampingan Intensitas Tinggi </h5>';
