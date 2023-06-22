@@ -64,7 +64,7 @@ trait Helpers {
         $res = '';
         if ($value == 0) {
             $res = 1;
-        } elseif ($value > 2) {
+        } elseif ($value >= 2) {
             $res = 5;
         } else {
             $res = 3;
